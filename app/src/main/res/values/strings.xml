@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Passenger</string>
+
+    <string name="passenger">PASSENGER</string>
+
+    <string name="HintUserName">User Name</string>
+    <string name="HintPassword">Password</string>
+
+    <string name="SignInButton">Sign In</string>
+    <string name="SignUpButton">Sign Up</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
