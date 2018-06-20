@@ -1,6 +1,7 @@
 package com.example.eltimmy.oneway2;
 
 import android.*;
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +71,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        checkLocationPermmission();
+        latLngs=new ArrayList<LatLng>();
+        markers=new ArrayList<Marker>();
              /* googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
@@ -91,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleDirectionsUrl.append("origin="+latLng.get(0).latitude+","+latLng.get(0).longitude);
         googleDirectionsUrl.append("&destination="+latLng.get(0).latitude+","+latLng.get(0).longitude);
         googleDirectionsUrl.append("&waypoints=optimize:true|");
-        for(int i=0;i<latLng.size();i++)
+        for(int i=1;i<latLng.size();i++)
         {
             googleDirectionsUrl.append(+latLng.get(i).latitude+","+latLng.get(i).longitude+"|");
         }
@@ -104,12 +108,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
         }
 
         mMap = googleMap;
 
+        latLngs.add(new LatLng(31.2468149,32.3195051));
+        latLngs.add(new LatLng(31.241462, 32.316670));
+        latLngs.add(new LatLng(31.2438146,32.3165811));
+
+        markers.add(mMap.addMarker(new MarkerOptions().position(latLngs.get(0)).title("Marker 1")));
+        markers.add(mMap.addMarker(new MarkerOptions().position(latLngs.get(1)).title("Marker 2")));
+        markers.add(mMap.addMarker(new MarkerOptions().position(latLngs.get(2)).title("Marker 3")));
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -164,6 +175,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+    }
+    public boolean checkLocationPermmission()
+    {
+        if ( ContextCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED&& ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)&& ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.ACCESS_FINE_LOCATION  },
+                        99);
+            }
+            else
+            {
+                ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.ACCESS_FINE_LOCATION  },
+                        99);
+            }
+            return false;
+        }
+        else
+            return true;
+
     }
 
     @Override

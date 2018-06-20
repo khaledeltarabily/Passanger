@@ -68,7 +68,7 @@ public class GetDirectionsData extends AsyncTask<Object,String,String> {
         jsonArray=dataParser.getWaypointOrder(s);
 
 
-        for(int i=0;i<waypoints-1;i++)//create duration
+        for(int i=0;i<waypoints;i++)//create duration
         {
             try {
                 marker_index=jsonArray.getInt(i);
@@ -78,10 +78,10 @@ public class GetDirectionsData extends AsyncTask<Object,String,String> {
             duration=dataParser.getDuration(s,i);
             dur=dur+Integer.parseInt(duration);
 
-            markers.get(marker_index).setTitle("Duration = "+dur/60+" mins");
+            markers.get(marker_index+1).setTitle("Duration = "+dur/60+" mins");
         }
         int dis=0;
-        for(int i=0;i<waypoints-1;i++)//create distance
+        for(int i=0;i<waypoints;i++)//create distance
         {
             try {
                 marker_index=jsonArray.getInt(i);
@@ -92,7 +92,7 @@ public class GetDirectionsData extends AsyncTask<Object,String,String> {
             distance=dataParser.getDistance(s,i);
             dis=dis+Integer.parseInt(distance);
 
-            markers.get(marker_index).setSnippet("Distance = "+dis+" M");
+            markers.get(marker_index+1).setSnippet("Distance = "+dis+" M");
         }
     }
 

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1071247204928-sgtc01refr02kugfeumkccmd27eqphcv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eltimmy.oneway2",
+            "certificate_hash": "e221e2487d85f93094b03febafaeaf56df3fa857"
+          }
+        },
+        {
           "client_id": "1071247204928-6vrli7nh1omati8eq98sc2cjm2nbdpne.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -29,6 +37,10 @@
             "package_name": "com.example.eltimmy.oneway2",
             "certificate_hash": "7af1fb970eef70ca70a27bd72995fc607cd8e29d"
           }
+        },
+        {
+          "client_id": "1071247204928-un1drfkp7j8poeds7gj0js2vuv7bu4d0.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "1071247204928-un1drfkp7j8poeds7gj0js2vuv7bu4d0.apps.googleusercontent.com",
