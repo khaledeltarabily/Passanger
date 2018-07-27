@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
 
-
+// aywa el tomyaaaaaaaaaaaaaaaaaaaaaaaaaaa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
+            
         email=(EditText) findViewById(R.id.Email);
         pass=(EditText) findViewById(R.id.Password);
 
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     public void Sign_Up(View view) {
         finish();
         startActivity(new Intent(this,SignUp.class));
-
+        // aywa el tomya el g7daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa lololol
+        
     }
 }
