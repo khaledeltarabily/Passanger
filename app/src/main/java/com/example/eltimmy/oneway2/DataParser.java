@@ -17,7 +17,7 @@ public class DataParser {
 
 
 
-
+//aywa el tmtooom
     public String[] parseDirections(String jsonData,int index) {
         JSONArray jsonArray=null;
         JSONObject jsonObject;
